@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script type="text/javascript" src="visgraph.min.js"></script>
+    <title>欢迎使用：{{ project_name }}</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/global.css"/>
+    <script type="text/javascript" src="../static/js/graphvis.min.js"></script>
+
+    <style>
+        #graph-panel {
+            width: 800px;
+            height: 600px;
+            background-color: #f2f2f2;
+        }
+    </style>
+
+
 </head>
 <body>
-//页面中需要包裹画布的元素
-<div id="graph-panel" style="width:800px;height:600px;"></div>
-
-
+<div id="graph-panel"></div>
 </body>
 <script>
-    //定义关系数据，包含节点（nodes）和 关系（links），可自定义属性，颜色、坐标，文字等
+
+
     var graphData = {
         nodes: [
             {id: '1', label: '刘备', type: '兄', x: 100, y: 200, properties: {name: '刘玄德'}},
@@ -30,4 +39,5 @@
     //调用绘图方法，绘制关系图
     visGraph.drawData(graphData);
 </script>
+
 </html>

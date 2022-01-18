@@ -29,9 +29,15 @@ GraphVis的存在使得我不用再搞绘图的细节问题，只需把数据交
 
 ### 知识库
 
+#### 文档
 - GraphVis开发文档：http://www.graphvis.cn/article/23
 - Flask开放文档：https://dormousehole.readthedocs.io/en/latest/
 - SQLite - Python：https://www.runoob.com/sqlite/sqlite-python.html
 - jQuery 教程：https://www.runoob.com/jquery/jquery-tutorial.html
 - CSS：https://www.runoob.com/css3/css3-tutorial.html
+
+#### 技术参考
+- 将flask拆分为多个py文件使用蓝图功能：https://blog.csdn.net/m0_37876745/article/details/95603397
+
+
 
