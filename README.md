@@ -1,3 +1,5 @@
+
+
 # 关系网可视化项目
 
 
@@ -5,6 +7,13 @@
 - 后端：FLask
 - 前端绘图：GraphVis
 - 数据库：Sqlite
+
+<center>
+
+![](https://cdn.jsdelivr.net/gh/xx025/cloudimg@main/img/20220118131927.png)
+
+</center>
+
 
 ---
 
