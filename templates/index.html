@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{project_name}}</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #282828;
+        {#    背景色取自ps默认背景#}
+        }
+
+        {#全局使用绝对定位完成}
+        {#用box1包裹元素，并使用据对定位完成#}
+        .box1 {
+            position: absolute;
+            background-color: #f2f2f2;
+            width: 960px;
+            height: 540px;
+        }
+
+
+        {#box2包含左#}
+        .box2 {
+            position: absolute;
+            top: 92px;
+            bottom: 122px;
+            height: auto;
+            width: 100%;
+        {#background-color: #00306e;#}
+        }
+
+        .part-left {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+
+        }
+
+        .part-left img {
+            width: 95%;
+            height: auto;
+        }
+
+        .part-right {
+            position: absolute;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+
+        }
+
+
+        .p1 {
+            position: absolute;
+            display: block;
+            top: 29px;
+            left: 53px;
+            font-size: 27px;
+            color: #00306e;
+            font-family: "SimHei";
+            white-space: normal;
+            text-align: center;
+        }
+
+        .p2 {
+            position: absolute;
+            display: block;
+            top: 120px;
+            left: 5%;
+            width: 90%;
+            font-family: "SimHei";
+            line-height: 28px;
+            font-size: 20px;
+            font-weight: 100;
+            color: #140010;
+        }
+
+        .p3 {
+
+            display: block;
+            position: absolute;
+            left: 25%;
+            width: 165px;
+            height: 60px;
+            background-color: black;
+            bottom: 1px;
+            text-align: center;
+        }
+
+        .p3 a {
+
+            color: white;
+            font-size: 27px;
+            line-height: 60px;
+            text-decoration: none;
+        {#    删除下划线#}
+        }
+
+    </style>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+
+        function re_set_location() {
+
+            //设置居中，如果视窗足够大就居中
+            var difeer_width = document.documentElement.clientWidth - $(".box1").width();
+            var difeer_height = document.documentElement.clientHeight - $(".box1").height();
+
+            var box1_left = 0
+            var box1_top = 0
+
+
+            if (difeer_width > 0) {
+                box1_left += parseInt(difeer_width / 2)
+            }
+            if (difeer_height > 0) {
+                box1_top += parseInt(difeer_height / 2)
+            }
+            $(".box1").offset({top: box1_top, left: box1_left});
+
+        }
+
+        window.onresize = function () {
+            re_set_location();
+        }
+        window.onload = function () {
+            re_set_location();
+        }
+    </script>
+</head>
+<body>
+
+<div class="box1">
+    <div class="box2">
+        <div class="part-left">
+            <img class="img-els" src="../static/img/1501077931-network.png">
+        </div>
+        <div class="part-right">
+            <p class="p1">欢迎使用：{{project_name}}</p>
+            <p class="p2">
+                项目简介：{{ project_profile }}</p>
+            <div class="p3">
+                <a href="app">立即开始 ></a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

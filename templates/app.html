@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="visgraph.min.js"></script>
+</head>
+<body>
+//页面中需要包裹画布的元素
+<div id="graph-panel" style="width:800px;height:600px;"></div>
+
+
+</body>
+<script>
+    //定义关系数据，包含节点（nodes）和 关系（links），可自定义属性，颜色、坐标，文字等
+    var graphData = {
+        nodes: [
+            {id: '1', label: '刘备', type: '兄', x: 100, y: 200, properties: {name: '刘玄德'}},
+            {id: '2', label: '关羽', type: '弟', x: 300, y: 200, properties: {name: '关云长'}},
+            {id: '3', label: '张飞', type: '弟', x: 500, y: 200, properties: {name: '张翼德'}}
+        ],
+        links: [
+            {source: '1', target: '2', label: '兄弟', properties: {desc: '结拜'}},
+            {source: '1', target: '3', label: '兄弟'}
+        ]
+    };
+    //创建GraphVis对象，进行方法调用
+    let visGraph = new VisGraph(document.getElementById('graph-panel'));
+
+    //调用绘图方法，绘制关系图
+    visGraph.drawData(graphData);
+</script>
+</html>
