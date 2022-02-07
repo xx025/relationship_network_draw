@@ -11,4 +11,4 @@ draw_app = Blueprint('draw', __name__)
 
 @draw_app.route('/app', methods=['post', 'get'])
 def my_application():
-    return render_template('app.html', project_name=setting.project_name, )
+    return render_template('app.html', project_name=setting.project_name)

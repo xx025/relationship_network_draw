@@ -56,44 +56,6 @@
             margin: 86px 30px;
         }
 
-        .p1 {
-            font-size: 27px;
-            color: #00306e;
-            margin-top: 86px;
-
-            white-space: normal;
-            text-align: center;
-        }
-
-        .p2 {
-            float: inherit;
-            top: 120px;
-            margin: 60px 30px 0 30px;
-
-            line-height: 28px;
-            font-size: 20px;
-            font-weight: 100;
-            color: #140010;
-        }
-
-        .p3 {
-            float: inherit;
-            margin-top: 60px;
-            margin-left: 156px;
-            width: 165px;
-            height: 60px;
-            background-color: black;
-            text-align: center;
-        }
-
-        .p3 a {
-            color: white;
-            font-size: 27px;
-            line-height: 60px;
-            text-decoration: none;
-            /*   删除下划线   */
-        }
-
         .p4info {
             font-size: 19px;
             color: black;
@@ -107,29 +69,58 @@
         <div class="box_main_top_left">
             <img src="../static/img/1501077931-network.png" alt="视图">
         </div>
-        <div class="box_main_top_right" id="dis_info" style="display: none">
-            <div class="p1">欢迎使用:{{ project_name }}</div>
-            <div class="p2">项目简介：{{ project_profile }}</div>
-            <div class="p3"><a href="/app">立即开始></a></div>
-        </div>
-        <div class="box_main_top_right" id="login" style="display: none">
-            <p class="textle">邮箱</p>
-            <input type="text">
-            <p class="textle">密码</p>
-            <input type="text">
-            <div>注册</div>
-            <div>登录</div>
-        </div>
-        <div class="box_main_top_right" id="register" style="display: block">
-            <p class="textle">邮箱</p>
-            <input type="text">
-            <p class="textle">密码</p>
-            <input type="text">
-            <p class="textle">重复密码</p>
-            <input type="text">
-            <div>注册</div>
-            <div>已有账号？<a>登录</a></div>
-        </div>
+
+        {% block content %}
+            <style>
+
+                .p1 {
+                    font-size: 27px;
+                    color: #00306e;
+                    margin-top: 86px;
+
+                    white-space: normal;
+                    text-align: center;
+                }
+
+                .p2 {
+                    float: inherit;
+                    top: 120px;
+                    margin: 60px 30px 0 30px;
+
+                    line-height: 28px;
+                    font-size: 20px;
+                    font-weight: 100;
+                    color: #140010;
+                }
+
+                .p3 {
+                    float: inherit;
+                    margin-top: 60px;
+                    margin-left: 156px;
+                    width: 165px;
+                    height: 60px;
+                    background-color: black;
+                    text-align: center;
+                }
+
+                .p3 a {
+                    color: white;
+                    font-size: 27px;
+                    line-height: 60px;
+                    text-decoration: none;
+                    /*   删除下划线   */
+                }
+
+
+            </style>
+            <div class="box_main_top_right" id="dis_info">
+                <div class="p1">欢迎使用:{{ project_name }}</div>
+                <div class="p2">项目简介：{{ project_profile }}</div>
+                <div class="p3"><a href="/app">立即开始></a></div>
+            </div>
+        {% endblock %}
+
+
     </div>
     <div class="box_main_bottom">
         <p class="p4info">注意：此系统需要您的电脑屏幕分辨率不低于1920*1080</p>
