@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     font-family: "Segoe UI";
+    user-select: none;
+    /*    防止文字被选中，*/
 }
 
 body {
@@ -49,4 +51,34 @@ body {
     font-size: 19px;
     color: black;
     margin: 12px auto 12px 10px;
+}
+
+.m-btn {
+    /*    中号的按钮设计*/
+    float: left;
+    height: 50px;
+    width: 122px;
+    background-color: #140010;
+    color: #f2f2f2;
+    line-height: 50px;
+    text-align: center;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.m-input {
+    /*   中号输入框设计*/
+    width: 370px;
+    height: 40px;
+    font-size: 22px;
+    padding-left: 15px;
+}
+
+/*文字超链接*/
+.spa {
+    cursor: pointer;
+}
+
+.spa:hover {
+    text-decoration: underline;
 }

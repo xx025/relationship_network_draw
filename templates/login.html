@@ -2,79 +2,19 @@
 
 {% extends "index.html" %}
 {% block style_css %}
-    <style>
-        #login {
-            margin-top: 80px;
-            margin-left: 55px;
-            margin-right: 55px;
-        }
 
-        #login p {
-            font-size: 19px;
-        }
-
-        #login input {
-            margin-top: 9px;
-            margin-bottom: 16px;
-            width: 370px;
-            height: 40px;
-            font-size: 22px;
-            padding-left: 15px;
-        }
-
-
-        #register-btn, #login-btn {
-            margin-top: 39px;
-            float: left;
-            height: 50px;
-            width: 122px;
-            background-color: #140010;
-            color: #f2f2f2;
-            line-height: 50px;
-            text-align: center;
-            font-size: 21px;
-            cursor: pointer;
-        {# 移入变小手#}
-        }
-
-        #register-btn:hover, #login-btn:hover {
-            font-size: 22px;
-        }
-
-        #register-btn {
-            margin-left: 30px;
-        }
-
-        #login-btn {
-            margin-left: 77px;
-        }
-
-        #zhmm {
-            margin-top: 88px;
-            margin-left: 204px;
-            display: inline-block;
-        }
-
-        #zhmm span {
-            cursor: pointer;
-        }
-
-        #zhmm span:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <script type=text/javascript src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 {% endblock %}
 {% block content %}
-
     <div id="login">
-        <p id="id">邮箱</p>
-        <input type="text">
-        <p id="password">密码</p>
-        <input type="password">
-        <div id="register-btn">注册</div>
-        <div id="login-btn">登录></div>
-
-        <div id="zhmm">忘记密码啦？<span id="zhmm-btn">找回密码</span>
+        <p>邮箱</p>
+        <input id="id" class="m-input" type="text">
+        <p>密码</p>
+        <input id="password" class="m-input" type="password">
+        <div id="register-btn" class="m-btn">注册</div>
+        <div id="login-btn" class="m-btn">登录></div>
+        <div id="zhmm">忘记密码啦？<span id="zhmm-btn" class="spa">找回密码</span>
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,42 @@
+#login {
+    margin-top: 80px;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+#login p {
+    font-size: 19px;
+}
+
+#login input {
+    margin-top: 9px;
+    margin-bottom: 16px;
+    width: 370px;
+    height: 40px;
+    font-size: 22px;
+    padding-left: 15px;
+}
+
+
+#register-btn, #login-btn {
+    margin-top: 39px;
+    float: left;
+}
+
+
+#register-btn {
+    margin-left: 30px;
+    margin-top: 39px;
+}
+
+#login-btn {
+    margin-top: 39px;
+    margin-left: 77px;
+}
+
+#zhmm {
+    margin-top: 88px;
+    margin-left: 204px;
+    display: inline-block;
+}
+

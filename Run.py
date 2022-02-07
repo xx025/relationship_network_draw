@@ -1,13 +1,14 @@
+from datetime import timedelta
+
 from flask import Flask, render_template
 from setting import setting
 from Applaction import draw_app
 from Account import user
 
 app = Flask(__name__)
-
+app.secret_key = "lyc"
 app.register_blueprint(draw_app)
 app.register_blueprint(user)
-
 
 
 @app.route('/')

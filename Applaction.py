@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, session, redirect, url_for
 
 from flask import Blueprint
 
@@ -11,4 +11,8 @@ draw_app = Blueprint('draw', __name__)
 
 @draw_app.route('/app', methods=['post', 'get'])
 def my_application():
-    return render_template('app.html', project_name=setting.project_name)
+    session['uid'] = 'user';
+    if session['uid'] != -1:
+        return redirect('/login')
+    else:
+        return render_template('app.html', project_name=setting.project_name)
