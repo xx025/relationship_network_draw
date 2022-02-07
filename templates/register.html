@@ -1,5 +1,7 @@
 {% extends "index.html" %}
-
+{% block style_css %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dis_info.css') }}">
+{% endblock %}
 {% block content %}
     <div class="box_main_top_right" id="register">
         <p class="textle">邮箱</p>
