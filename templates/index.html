@@ -5,117 +5,11 @@
     <title>{{ project_name }}</title>
     <script type=text/javascript src="{{ url_for('static', filename='js/jquery_2.0.0.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: "SimHei";
-        }
-
-        body {
-            width: 100%;
-            height: 100%;
-            background-color: #282828;
-            /*  背景色取自ps默认背景*/
-        }
-
-        .box_main {
-            margin: 60px auto;
-            background-color: #f2f2f2;
-            width: 960px;
-            height: 540px;
-        }
-
-
-        .box_main_top {
-            width: inherit;
-            height: 490px;
-        }
-
-
-        .box_main_top .box_main_top_left, .box_main_top_right {
-            float: left;
-            height: inherit;
-            width: 480px;
-        }
-
-        .box_main_bottom {
-            width: inherit;
-            height: 50px;
-            border-top: 2px;
-            border-top-color: #00306e;
-            border-top-style: solid;
-        }
-
-        .box_main_top_left img {
-            max-width: 420px;
-            height: auto;
-            margin: 86px 30px;
-        }
-
-        .p4info {
-            font-size: 19px;
-            color: black;
-            margin: 12px auto 12px 10px;
-        }
-
-        /*dis_info 首页展示项目简介等等*/
-        #dis_info .p1 {
-            font-size: 27px;
-            color: #00306e;
-            margin-top: 86px;
-
-            white-space: normal;
-            text-align: center;
-        }
-
-        #dis_info .p2 {
-            float: inherit;
-            top: 120px;
-            margin: 60px 30px 0 30px;
-
-            line-height: 28px;
-            font-size: 20px;
-            font-weight: 100;
-            color: #140010;
-        }
-
-        #dis_info .p3 {
-            float: inherit;
-            margin-top: 60px;
-            margin-left: 156px;
-            width: 165px;
-            height: 60px;
-            background-color: black;
-            text-align: center;
-        }
-
-        #dis_info .p3 a {
-            color: white;
-            font-size: 27px;
-            line-height: 60px;
-            text-decoration: none;
-            /*   删除下划线   */
-        }
-
-        /*login 登录框按钮等等*/
-        #login {
-            margin-left: 55px;
-            margin-right: 55px;
-        }
-
-        #login p {
-            font-size: 19px;
-        }
-
-        #login input {
-            width: 370px;
-            height: 40px;
-            font-size: 22px;
-        }
-    </style>
+    {% block style_css %}
+        {#不同的页面加载不同的css样式文件#}
+        {#参考，jinja2模板：http://www.ainoob.cn/docs/jinja2/templates.html#id11#}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dis_info.css') }}">
+    {% endblock %}
 </head>
 <body>
 <div class="box_main">
@@ -123,7 +17,6 @@
         <div class="box_main_top_left">
             <img src="../static/img/1501077931-network.png" alt="视图">
         </div>
-
         <div class="box_main_top_right">
             {% block content %}
                 {#基础模板默认的展示#}
@@ -139,6 +32,5 @@
         <p class="p4info">注意：此系统需要您的电脑屏幕分辨率不低于1920*1080</p>
     </div>
 </div>
-
 </body>
 </html>
