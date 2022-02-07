@@ -1,0 +1,38 @@
+/*dis_info 首页展示项目简介等等*/
+#dis_info .p1 {
+    font-size: 27px;
+    color: #00306e;
+    margin-top: 86px;
+
+    white-space: normal;
+    text-align: center;
+}
+
+#dis_info .p2 {
+    float: inherit;
+    top: 120px;
+    margin: 60px 30px 0 30px;
+
+    line-height: 28px;
+    font-size: 20px;
+    font-weight: 100;
+    color: #140010;
+}
+
+#dis_info .p3 {
+    float: inherit;
+    margin-top: 60px;
+    margin-left: 156px;
+    width: 165px;
+    height: 60px;
+    background-color: black;
+    text-align: center;
+}
+
+#dis_info .p3 a {
+    color: white;
+    font-size: 27px;
+    line-height: 60px;
+    text-decoration: none;
+    /*   删除下划线   */
+}
