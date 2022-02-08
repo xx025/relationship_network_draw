@@ -4,14 +4,8 @@
 - 前端绘图：GraphVis
 - 数据库：Sqlite
 
-<center>
 
-![](https://cdn.jsdelivr.net/gh/xx025/cloudimg@main/img/20220118131927.png)
-
-</center>
-
-
-
+![](https://cdn.jsdelivr.net/gh/xx025/cloudimg@main/img/20220208104850.png)
 
 ---
 
