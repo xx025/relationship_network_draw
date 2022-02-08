@@ -1,14 +1,14 @@
-#register {
+#register, #a_acc {
     margin-top: 76px;
     margin-left: 55px;
     margin-right: 55px;
 }
 
-#register p {
+#register p, #a_acc p {
     font-size: 19px;
 }
 
-#register input {
+#register input, #a_acc input {
     margin-top: 9px;
     margin-bottom: 16px;
 }
@@ -19,6 +19,11 @@
     margin-left: 129px;
 }
 
+
+#submit_code {
+    margin-top: 68px;
+    margin-left: 129px;
+}
 
 .ll-login {
     width: 100%;

@@ -1,0 +1,38 @@
+#recover_password {
+    margin-top: 76px;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+#recover_password p, #a_acc p {
+    font-size: 19px;
+}
+
+#recover_password input, #a_acc input {
+    margin-top: 9px;
+    margin-bottom: 16px;
+}
+
+
+#submit-btn {
+    margin-top: 18px;
+    margin-left: 129px;
+}
+
+#code {
+    float: left;
+    width: 248px;
+}
+
+#get-code {
+    height: 40px;
+    width: 104px;
+    margin-top: 9px;
+    margin-left: 18px;
+    line-height: 40px;
+    font-size: 17px;
+}
+
+.line-block {
+    display: inline-block;
+}
