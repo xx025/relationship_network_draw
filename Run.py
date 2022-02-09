@@ -11,6 +11,8 @@ app.register_blueprint(draw_app)
 app.register_blueprint(user)
 
 
+
+
 @app.route('/')
 def hello_world():
     return render_template("index.html", project_name=setting.project_name,
