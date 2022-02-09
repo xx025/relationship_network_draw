@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#register-btn").click(function () {
+    $("#submit-btn").click(function () {
         window.location.href = "/register"
     });
 

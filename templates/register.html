@@ -6,13 +6,13 @@
 {% endblock %}
 {% block content %}
     <div class="box_main_top_right" id="register" style="display: block">
-        <p class="textle">邮箱</p>
-        <input id="id" class="m-input" type="text">
-        <p class="textle">密码</p>
+        <p class="textle">邮箱 <span id="ema"></span></p>
+        <input id="email" class="m-input" type="text">
+        <p>密码 <span id="pas"></span></p>
         <input id="password" class="m-input" type="password">
-        <p class="textle">重复密码</p>
+        <p>重复密码 <span id="re_pas"></span></p>
         <input id="re_password" class="m-input" type="password">
-        <div id="register-btn" class="m-btn">提交</div>
+        <div id="submit-btn" class="m-btn">提交</div>
         <div class="ll-login">
             已有账号？<span class="spa login_link">登录</span>
         </div>

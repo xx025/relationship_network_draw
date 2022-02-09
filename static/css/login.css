@@ -18,13 +18,13 @@
 }
 
 
-#register-btn, #login-btn {
+#submit-btn, #login-btn {
     margin-top: 39px;
     float: left;
 }
 
 
-#register-btn {
+#submit-btn {
     margin-left: 30px;
     margin-top: 39px;
 }
