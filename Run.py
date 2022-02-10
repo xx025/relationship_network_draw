@@ -15,9 +15,11 @@ app.register_blueprint(user)
 
 @app.route('/')
 def hello_world():
+    print(setting.send_email)
     return render_template("index.html", project_name=setting.project_name,
                            project_profile=setting.project_profile)
 
 
 if __name__ == '__main__':
+
     app.run(host='0.0.0.0', port=80, debug=True)

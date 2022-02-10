@@ -16,6 +16,11 @@ class config():
         # cp.read("config.ini")
         self.project_name = cp.get("project_info", "project_name")
         self.project_profile = cp.get("project_info", "project_profile")
+        self.send_email = {'email': cp.get('send_email', 'address'),
+                           'password': cp.get('send_email', 'password'),
+                           'server': cp.get('send_email', 'send_server'),
+                           'port': cp.get('send_email', 'send_port')
+                           }
 
 
 setting = config()
