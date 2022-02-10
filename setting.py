@@ -4,7 +4,7 @@ from configparser import ConfigParser
 
 # 从config.cfg读取配置信息
 
-class config():
+class config:
     project_name = ""
     project_profile = ""
 
