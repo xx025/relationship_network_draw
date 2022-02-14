@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
-
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
@@ -43,7 +40,8 @@ class verification_code:
         return self.code
 
     def mail_text(self):
-        return '您的验证码：' + self.code['code']+',有效期五分钟'
+        return '您的验证码：' + self.code['code'] + ',有效期五分钟'
+        # return self.code['code']
 
     @staticmethod
     def creat_code():
@@ -67,5 +65,5 @@ class verification_code:
         }
 
 
-vr = verification_code('draw-send@yandex.com').mail()
+vr = verification_code('syhfr_11@163.com').mail()
 print(vr)
