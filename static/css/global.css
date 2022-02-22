@@ -84,3 +84,9 @@ body {
 .spa:hover {
     text-decoration: underline;
 }
+
+
+
+.line-block {
+    display: inline-block;
+}

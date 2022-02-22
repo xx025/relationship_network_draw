@@ -18,11 +18,14 @@
         </div>
     </div>
     <div class="box_main_top_right" id="a_acc" style="display: none">
-        <p class="textle">邮箱</p>
+        <p id="block_email">邮箱</p>
         <input id="id" class="m-input" type="text">
-        <p class="textle">验证码</p>
-        <input id="per_code" class="m-input" type="text">
-        <p id="di_log">验证码已经发送到您的邮箱，请检查收件箱</p>
+        <p>验证码</p>
+        <div class="line-block">
+            <input id="code" class="m-input" type="text">
+            <div id="get-code" class="m-btn">发送</div>
+        </div>
+        <p id="di_log">请获取验证码</p>
         <div id="submit_code" class="m-btn">确认</div>
         <div class="ll-login">
             已有账号？<span class="spa login_link">登录</span>

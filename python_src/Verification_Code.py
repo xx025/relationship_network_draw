@@ -13,7 +13,7 @@ class verification_code:
         self.email_sever = email['server']  # 发件服务器地址
         self.email_port = email['port']  # 发件服务器端口号
         self.receiver = receiver  # 收件人邮箱账号，我这边发送给自己
-        self.code = self.get_code()
+        self.codes = self.get_codes()
 
     def mail(self):
         """
@@ -35,32 +35,29 @@ class verification_code:
             # 关闭连接
         except Exception as e:  # 如果 try 中的语句没有执行，则会执行下面的 ret=False
             print(e)
-            self.code['status'] = 0
+            self.codes['status'] = 0
             # 发送失败，标记状态
-        return self.code
+        return self.codes
 
     def mail_text(self):
-        return '您的验证码：' + self.code['code'] + ',有效期五分钟'
+        return '您的验证码：' + self.codes['code'] + ',有效期五分钟'
         # return self.code['code']
 
-    @staticmethod
-    def creat_code():
-        import random
-        code = []
-        for i in range(6):
-            if i == str(random.randint(1, 5)):
-                code.append(i)
-            else:
-                temp = random.randint(65, 90)
-                code.append(chr(temp))
+    def get_codes(self):
+        def creat_code():
+            import random
+            code = []
+            for i in range(6):
+                if i == str(random.randint(1, 5)):
+                    code.append(i)
+                else:
+                    temp = random.randint(65, 90)
+                    code.append(chr(temp))
 
-        return ''.join(code)
+            return ''.join(code)
 
-    @staticmethod
-    def get_code():
         return {
-            'code': verification_code.creat_code(),
+            'code': creat_code(),
             'expiry_time': time.time() + 5 * 3600,
             'status': 1
         }
-
