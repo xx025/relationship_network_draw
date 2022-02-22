@@ -64,6 +64,3 @@ class verification_code:
             'status': 1
         }
 
-
-vr = verification_code('syhfr_11@163.com').mail()
-print(vr)

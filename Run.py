@@ -11,8 +11,6 @@ app.register_blueprint(draw_app)
 app.register_blueprint(user)
 
 
-
-
 @app.route('/')
 def hello_world():
     print(setting.send_email)
@@ -21,5 +19,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-
     app.run(host='0.0.0.0', port=80, debug=True)
