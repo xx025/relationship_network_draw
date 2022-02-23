@@ -1,11 +1,8 @@
-
-
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, session
 
 from python_src.Decode_loads import decode_loads
+from python_src.Email_Code import email_code
 from setting import setting
-from python_src.Register import register as py_register
-
 
 user = Blueprint('user', __name__)
 
@@ -13,10 +10,9 @@ user = Blueprint('user', __name__)
 @user.route('/send_code', methods=['post'])
 def send_code():
     if request.method == 'POST':
-
         data = decode_loads(request.data)
-        test = getcode(email=data['email'])
-        codes = test.get_codes()
+        codes = email_code(email=data['email']).get_codes()
+        session['codes'] = codes
         '''
          发送成功:status:1
          发送失败:status:0
