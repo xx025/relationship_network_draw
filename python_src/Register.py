@@ -9,8 +9,7 @@ from flask import session
 class register:
 
     def __init__(self, email, password, code):
-        self.code_str = None
-        self.code = None
+        self.code = code
         self.email = email
         self.password = password
 
