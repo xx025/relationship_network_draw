@@ -1,21 +1,13 @@
-from flask import Flask, render_template
 
-from setting import setting
-from Applaction import draw_app
+from flask_app_config import app
+
 from Account import user
+from Applaction import draw_app
+from Mail import mail_s
 
-app = Flask(__name__)
-app.secret_key = "lyc"
 app.register_blueprint(draw_app)
 app.register_blueprint(user)
-
-
-
-
-@app.route('/')
-def hello_world():
-    return render_template("index.html", project_name=setting.project_name,
-                           project_profile=setting.project_profile)
+app.register_blueprint(mail_s)
 
 
 if __name__ == '__main__':

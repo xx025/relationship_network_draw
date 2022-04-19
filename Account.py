@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template, request, session
 
-
 from python_src.Decode_loads import decode_loads
-from python_src.Send_Code import send_codes as py_send_code
 
 from setting import setting
 
@@ -11,23 +9,29 @@ user = Blueprint('user', __name__)
 
 @user.route('/send_code', methods=['post'])
 def send_code():
+    '''
+    发送验证码
+    '''
     if request.method == 'POST':
         data = decode_loads(request.data)
-
-        # session['codes'] = codes
-
-        status= py_send_code(data['email']).my_send()
-        '''
-         发送成功:status:1
-         发送失败:status:0
-        '''
-        return str(status)
+        print(data)
+        return data
+    else:
+        return "0"
 
 
 @user.route('/register', methods=['post', 'get'])
 def register():
     if request.method == 'POST':
         data = decode_loads(request.data)
+
+        email = data['email']
+        password = data['password']
+        code = data['code']
+
+        new_user = (email, password, code)
+
+        print(new_user)
         return "1"
     else:
         return render_template("register.html", project_name=setting.project_name,

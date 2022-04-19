@@ -62,8 +62,8 @@ $(document).ready(function () {
         }
 
         function check_email(szMail) {
-            let szReg = /^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$/;
-            //邮箱正则匹配来自：https://blog.csdn.net/weixin_42337065/article/details/114721244
+            let szReg = /^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,8})$/;
+            //邮箱正则匹配来自：https://juejin.cn/post/6844903574778937358
             return szReg.test(szMail);
         }
 
@@ -148,6 +148,8 @@ $(document).ready(function () {
             send_code();
         })
 
+
+        //为submit绑定注册
         $("#submit_code").click(function () {
             register();
         })
@@ -156,5 +158,4 @@ $(document).ready(function () {
         });
 
     }
-)
-;
+);

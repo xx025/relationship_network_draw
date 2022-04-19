@@ -27,6 +27,7 @@ GraphVis的存在使得我不用再搞绘图的细节问题，只需把数据交
 
 - GraphVis开发文档：http://www.graphvis.cn/article/23
 - Flask开发文档：https://dormousehole.readthedocs.io/en/latest/
+- FlaskMail文档：http://www.pythondoc.com/flask-mail/
 - Jinja2文档：http://www.ainoob.cn/docs/jinja2/index.html
 - SQLite - Python：https://www.runoob.com/sqlite/sqlite-python.html
 - jQuery 教程：https://www.runoob.com/jquery/jquery-tutorial.html
@@ -37,13 +38,12 @@ GraphVis的存在使得我不用再搞绘图的细节问题，只需把数据交
 - 将flask拆分为多个py文件使用蓝图功能：https://blog.csdn.net/m0_37876745/article/details/95603397
 - yandex邮箱IMAP设置：https://zhuanlan.zhihu.com/p/338058178
 - Python SMTP发送邮件：https://www.runoob.com/python/python-email.html
+- Flask-Mail的使用：https://blog.csdn.net/y472360651/article/details/77944869
 
----
-提供一个测试邮箱：
 
-email-address:  `draw-send@yandex.com `
 
- password:       `Hq9JwspitkQ2zw6`
+
+
 
 
 
