@@ -1,9 +1,9 @@
 
 from flask_app_config import app
 
-from Account import user
-from Applaction import draw_app
-from Mail import mail_s
+from routes.Account import user
+from routes.Applaction import draw_app
+from routes.Mail import mail_s
 
 app.register_blueprint(draw_app)
 app.register_blueprint(user)

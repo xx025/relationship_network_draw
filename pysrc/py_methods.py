@@ -1,12 +1,23 @@
+import json
 import time
 
-'''
-生成一个6位的随机验证码
-返回一个字典对象，其中包括验证码、过期时间
-'''
+
+def decode_loads(this_bytes):
+    """
+    格式化post请求bytes为dict
+    """
+
+    try:
+        return json.loads(this_bytes.decode('utf-8'))
+    except:
+        return {}
 
 
 class random_code:
+    """
+    生成一个6位的随机验证码
+    返回一个字典对象，其中包括验证码、过期时间
+    """
 
     @staticmethod
     def get_codes():

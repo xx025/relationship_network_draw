@@ -2,7 +2,7 @@ from flask import render_template, session, redirect, url_for
 
 from flask import Blueprint
 
-from setting import setting
+from flask_setting import setting
 
 draw_app = Blueprint('draw', __name__)
 

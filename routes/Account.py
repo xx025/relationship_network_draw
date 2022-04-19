@@ -1,23 +1,32 @@
-from flask import Blueprint, render_template, request, session
-
-from python_src.Decode_loads import decode_loads
-
-from setting import setting
+from flask import Blueprint, render_template, request
+from flask_mail import Message
+from flask import Flask, session
+from flask_mail_config import mail
+from pysrc.py_methods import decode_loads, random_code
+from flask_setting import setting
 
 user = Blueprint('user', __name__)
 
 
 @user.route('/send_code', methods=['post'])
 def send_code():
-    '''
+    """
     发送验证码
-    '''
+    """
     if request.method == 'POST':
         data = decode_loads(request.data)
-        print(data)
-        return data
-    else:
-        return "0"
+        codes = random_code.get_codes()
+
+        try:
+            msg = Message("Hi!来自绘图的验证码", sender=setting.send_email['email'],
+                          recipients=[data['email'], ])
+            msg.body = "您的验证码：" + codes['code'] + '有效期五分钟。'
+            mail.send(msg)
+            session.items()
+
+            return "1"
+        except:
+            return "0"
 
 
 @user.route('/register', methods=['post', 'get'])
