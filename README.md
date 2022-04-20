@@ -32,6 +32,8 @@ GraphVis的存在使得我不用再搞绘图的细节问题，只需把数据交
 - SQLite - Python：https://www.runoob.com/sqlite/sqlite-python.html
 - jQuery 教程：https://www.runoob.com/jquery/jquery-tutorial.html
 - CSS：https://www.runoob.com/css3/css3-tutorial.html
+- Flask-Sqlite：http://www.pythondoc.com/flask/patterns/sqlite3.html
+- Sqlite-Python：https://www.runoob.com/sqlite/sqlite-python.html
 
 #### 技术参考
 

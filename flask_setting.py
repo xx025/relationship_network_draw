@@ -21,6 +21,7 @@ class config:
                            'server': cp.get('send_email', 'send_server'),
                            'port': cp.get('send_email', 'send_port')
                            }
+        self.sqlite_db_path = cp.get('sqlite_db', 'path')
 
 
 setting = config()

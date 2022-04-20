@@ -1,5 +1,6 @@
 import json
 import time
+import hashlib
 
 
 def decode_loads(this_bytes):
@@ -37,3 +38,7 @@ class random_code:
             'code': creat_code(),
             'expiry_time': time.time() + 5 * 3600,
         }
+
+
+def get_hash256(hash_str):
+    return hashlib.sha256(hash_str.encode('utf-8')).hexdigest()

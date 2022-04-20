@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 from flask_mail import Message
 from flask import Flask, session
 from flask_mail_config import mail
-from pysrc.py_methods import decode_loads, random_code
+from pysrc.Account import add_new_user
+from pysrc.py_methods import decode_loads, random_code, get_hash256
 from flask_setting import setting
 
 user = Blueprint('user', __name__)
@@ -15,14 +16,17 @@ def send_code():
     """
     if request.method == 'POST':
         data = decode_loads(request.data)
+        email = data['email']
         codes = random_code.get_codes()
+        code = codes['code']
 
         try:
             msg = Message("Hi!来自绘图的验证码", sender=setting.send_email['email'],
-                          recipients=[data['email'], ])
-            msg.body = "您的验证码：" + codes['code'] + '有效期五分钟。'
+                          recipients=[email, ])
+            msg.body = "您的验证码：" + code + '。'
             mail.send(msg)
-            session.items()
+            session['code'] = code
+            session['email'] = email
 
             return "1"
         except:
@@ -33,15 +37,32 @@ def send_code():
 def register():
     if request.method == 'POST':
         data = decode_loads(request.data)
+        receive_email = data['email']
+        receive_password = data['password']
+        receive_code = data['code']
+        if (session.get('email') is not None) and (session.get('code') is not None):
+            # 检查session对象中是否存储email 和 code , emial 用于安全性校验
 
-        email = data['email']
-        password = data['password']
-        code = data['code']
+            session_email = session.get('email')
+            session_code = session.get('code')
 
-        new_user = (email, password, code)
+            if receive_email == session_email and receive_code == session_code:
+                # 检测验证码是否正确
 
-        print(new_user)
-        return "1"
+                password = get_hash256(receive_password)
+                # 将密码字段进行hash256
+
+                re = add_new_user(email=receive_email, password=password)
+                # 向数据库添加新用户
+
+                if re[0]:
+                    return jsonify({"code": 1, "msg": "注册成功"})
+                else:
+                    return jsonify({"code": -1, "msg": "注册失败,邮箱已被注册"})
+            else:
+                return jsonify({"code": 2, "msg": "验证码错误"})
+        else:
+            return jsonify({"code": 3, "msg": "请获取验证码"})
     else:
         return render_template("register.html", project_name=setting.project_name,
                                project_profile=setting.project_profile)

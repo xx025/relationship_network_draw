@@ -34,10 +34,18 @@ $(document).ready(function () {
                 data: JSON.stringify(data),
                 contentType: 'application/json; charset=UTF-8',
                 success: function (data) {
-                    if (data === "1") {
-                        console.log("发送成功")
+
+                    console.log(data)
+                    code = data["code"]
+                    msg = data['msg']
+                    if (code === 1) {
+                        alert(msg)
+                        location.href = "/login"
+                    } else if (code === -1) {
+                        alert(msg)
+                        location.reload()
                     } else {
-                        console.log("失败")
+                        alert(msg)
                     }
                 },
                 error: function (emg) {
