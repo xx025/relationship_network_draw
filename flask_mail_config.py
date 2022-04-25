@@ -1,9 +1,9 @@
 
 
-from flask_app_config import app
-from flask_setting import setting
 from flask_mail import Mail
 
+from flask_app_config import app
+from flask_setting import setting
 
 app.config.update(
     MAIL_SERVER=setting.send_email["server"],

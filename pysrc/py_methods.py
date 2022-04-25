@@ -1,6 +1,7 @@
-import json
-import time
 import hashlib
+import json
+import os
+import time
 
 
 def decode_loads(this_bytes):
@@ -42,3 +43,18 @@ class random_code:
 
 def get_hash256(hash_str):
     return hashlib.sha256(hash_str.encode('utf-8')).hexdigest()
+
+
+def create_filename(filename):
+    '''
+    生成基于时间戳的随机文件名
+    :param filename: 文件原名
+    :return: 文件名
+    '''
+    import uuid
+    ext = os.path.splitext(filename)[1]
+    new_file_name = str(uuid.uuid1()) + ext
+    return new_file_name
+
+
+

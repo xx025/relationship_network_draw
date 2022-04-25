@@ -1,10 +1,12 @@
 from flask import Blueprint, render_template, request, jsonify
+from flask import session
 from flask_mail import Message
-from flask import Flask, session
+
 from flask_mail_config import mail
-from pysrc.Account import add_new_user, check_user_pass, check_user_email, update_password
-from pysrc.py_methods import decode_loads, random_code, get_hash256
 from flask_setting import setting
+from pysrc.Account import add_new_user, check_user_pass, check_user_email, \
+    update_password
+from pysrc.py_methods import decode_loads, random_code, get_hash256
 
 user = Blueprint('user', __name__)
 
@@ -50,7 +52,8 @@ def register():
         receive_email = data['email']
         receive_password = data['password']
         receive_code = data['code']
-        if (session.get('email') is not None) and (session.get('code') is not None):
+        if (session.get('email') is not None) and (
+                session.get('code') is not None):
             # 检查session对象中是否存储email 和 code , emial 用于安全性校验
             session_email = session.get('email')
             session_code = session.get('code')
@@ -69,7 +72,8 @@ def register():
         else:
             return jsonify({"code": 3, "msg": "请获取验证码"})
     else:
-        return render_template("register.html", project_name=setting.project_name,
+        return render_template("register.html",
+                               project_name=setting.project_name,
                                project_profile=setting.project_profile)
 
 
@@ -80,7 +84,8 @@ def login():
         receive_email = data['email']
         receive_password = data['password']
         if check_user_email(email=receive_email):
-            if check_user_pass(email=receive_email, password=get_hash256(receive_password)):
+            if check_user_pass(email=receive_email,
+                               password=get_hash256(receive_password)):
                 session["email"] = receive_email
                 session["islogin"] = True
                 return jsonify({"code": 1, "msg": "登录成功"})
@@ -102,7 +107,8 @@ def recover_password():
         receive_password = data['password']
         receive_code = data['code']
         if check_user_email(email=receive_email):
-            if (session.get('email') is not None) and (session.get('code') is not None):
+            if (session.get('email') is not None) and (
+                    session.get('code') is not None):
                 session_email = session.get('email')
                 session_code = session.get('code')
                 if receive_email == session_email and receive_code == session_code:
@@ -118,7 +124,6 @@ def recover_password():
     else:
         return render_template("rpass.html", project_name=setting.project_name,
                                project_profile=setting.project_profile)
-
 
 
 @user.route('/logout', methods=['post', 'get'])
