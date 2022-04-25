@@ -6,7 +6,6 @@ from flask_mail import Mail
 
 
 app.config.update(
-    DEBUG=True,
     MAIL_SERVER=setting.send_email["server"],
     MAIL_PROT=setting.send_email["port"],
     MAIL_USERNAME=setting.send_email['email'],

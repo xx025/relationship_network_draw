@@ -19,7 +19,7 @@ $(document).ready(function () {
                     code = data["code"]
                     msg = data["msg"]
                     if (code === 1) {
-                        alert(msg)
+                        // alert(msg)
                         location.href = '/app'
                     } else {
                         //账户不存在或者密码错误
