@@ -5,16 +5,15 @@
 {% endblock %}
 {% block content %}
     <div class="box_main_top_right" id="recover_password" style="display: block">
-        <p>邮箱</p>
-        <input id="id" class="m-input" type="text">
-        <p>验证码</p>
+        <p>邮箱 <span id="mail_text"></span></p>
+        <input id="email" class="m-input" type="text">
+        <p>验证码 <span id="code_text"></span></p>
         <div class="line-block">
             <input id="code" class="m-input" type="text">
-            <div id="get-code" class="m-btn">发送</div>
+            <div id="get_code" class="m-btn">发送</div>
         </div>
-        <p>新密码</p>
-        <input id="re_password" class="m-input" type="password">
+        <p>新密码 <span id="password_text"></span></p>
+        <input id="password" class="m-input" type="password">
         <div id="submit-btn" class="m-btn">提交</div>
     </div>
-
 {% endblock %}

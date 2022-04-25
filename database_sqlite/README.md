@@ -14,9 +14,8 @@
 ```sqlite
 CREATE TABLE user
 (
-    id            char(16) primary key,
-    email         char(64),
-    password_hash char(64)
+    email         text primary key,
+    password_hash text
 );
 
 ```

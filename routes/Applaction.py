@@ -11,9 +11,9 @@ draw_app = Blueprint('draw', __name__)
 
 @draw_app.route('/app', methods=['post', 'get'])
 def my_application():
-    uid = session.get('uid')
+    uid = session.get('islogin')
     print(uid)
-    if uid is None:
+    if uid is None or uid is False:
         return redirect('/login')
     else:
         return render_template('app.html', project_name=setting.project_name)

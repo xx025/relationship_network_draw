@@ -3,11 +3,11 @@ from flask_db_config import database
 
 from routes.Account import user
 from routes.Applaction import draw_app
-from routes.Mail import mail_s
+
 
 app.register_blueprint(draw_app)
 app.register_blueprint(user)
-app.register_blueprint(mail_s)
+
 
 database.init_db()
 # 初始化数据库

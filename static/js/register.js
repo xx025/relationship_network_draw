@@ -11,13 +11,13 @@ $(document).ready(function () {
                 data: JSON.stringify({'email': email}),
                 contentType: 'application/json; charset=UTF-8',
                 success: function (data) {
-                    console.log(data)
+                    // console.log(data)
                     if (data === "1") {
                         $("#di_log").text('验证码已经发送到您的邮箱，请检查收件箱')
                     }
                 },
                 error: function (emg) {
-                    console.log(emg)
+                    // console.log(emg)
                     $("#di_log").text('发送失败')
                 }
             });
@@ -35,7 +35,7 @@ $(document).ready(function () {
                 contentType: 'application/json; charset=UTF-8',
                 success: function (data) {
 
-                    console.log(data)
+                    // console.log(data)
                     code = data["code"]
                     msg = data['msg']
                     if (code === 1) {
@@ -58,12 +58,37 @@ $(document).ready(function () {
         function ok_form() {
             if (ok_reg === 1) {
                 $("#submit-btn").click(function () {
+
+                    //1. 点击按钮为邮箱和密码绑定值
                     email = $("#email").val();
                     password = $("#password").val();
-                    $("#register").css("display", 'none');
-                    $("#a_acc").css("display", 'block');
-                    $("#id").val(email)
-                    $("#id").attr("readonly", true)
+
+                    //2. 点击按钮为邮箱进行重复性校验
+                    let data = {'email': email}
+                    $.ajax({
+                        url: "/check_email",
+                        type: "post",
+                        data: JSON.stringify(data),
+                        contentType: 'application/json; charset=UTF-8',
+                        success: function (data) {
+                            // console.log(data)
+                            code = data["code"]
+                            msg = data['msg']
+                            if (code === 1) {
+                                // alert(msg)
+                                $("#register").css("display", 'none');
+                                $("#a_acc").css("display", 'block');
+                                $("#id").val(email)
+                                $("#id").attr("readonly", true)
+                            } else {
+                                alert(msg)
+                                // location.reload()
+                            }
+                        },
+                        error: function (emg) {
+                            console.log(emg);
+                        }
+                    });
 
                 })
             }

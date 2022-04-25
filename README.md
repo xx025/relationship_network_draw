@@ -41,6 +41,7 @@ GraphVis的存在使得我不用再搞绘图的细节问题，只需把数据交
 - ~~yandex邮箱IMAP设置：https://zhuanlan.zhihu.com/p/338058178~~
 - ~~Python SMTP发送邮件：https://www.runoob.com/python/python-email.html~~ 
 - Flask-Mail的使用：https://blog.csdn.net/y472360651/article/details/77944869
+- Flask+Vue环境配置:https://www.bilibili.com/video/BV1Z54y1q7BZ
 
 
 

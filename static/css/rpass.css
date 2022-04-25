@@ -32,3 +32,14 @@
     line-height: 40px;
     font-size: 17px;
 }
+
+input#code {
+    margin-right: 9px;
+}
+
+div#get_code {
+    height: 44px;
+    margin-top: 9px;
+    line-height: 44px;
+    width: 115px;
+}
