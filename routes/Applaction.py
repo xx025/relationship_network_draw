@@ -1,13 +1,14 @@
 import os
 
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from flask import render_template, session, redirect, request
 from werkzeug.utils import secure_filename
 
 from flask_app_config import ALLOWED_EXTENSIONS
 from flask_setting import setting
 from pysrc import get_table_date
-from pysrc.py_methods import create_filename
+from pysrc.get_table_date import convert_graph_data
+from pysrc.py_methods import create_filename, get_demo_data
 
 draw_app = Blueprint('draw', __name__)
 
@@ -19,10 +20,11 @@ UPLOAD_FOLDER = 'uploads/'
 @draw_app.route('/app', methods=['post', 'get'])
 def my_application():
     uid = session.get('islogin')
-    if uid is None or uid is False:
+    email = session.get('email')
+    if (uid is None or uid is False) or (email is None):
         return redirect('/login')
     else:
-        return render_template('app.html', project_name=setting.project_name)
+        return render_template('application.html', project_name=setting.project_name, email=email)
 
 
 def allowed_file(filename):
@@ -32,10 +34,18 @@ def allowed_file(filename):
 
 @draw_app.route('/upload', methods=['POST'])
 def upload_file():
+    '''
+    上传文件
+    :return: 上传的文件生成的json数据
+    '''
     f = request.files['file']
     file_name = secure_filename(f.filename)
     new_name = create_filename(file_name)
     path = os.path.join(UPLOAD_FOLDER, new_name)
     f.save(path)
-    # print(get_table_date.get_tabd(path).get_data())
-    return 'file uploaded successfully'
+    return jsonify(convert_graph_data(file_path=path).get_gv_data())
+
+
+@draw_app.route('/demo_data', methods=['POST','GET'])
+def demo_data():
+    return jsonify(get_demo_data())

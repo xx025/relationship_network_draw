@@ -12,5 +12,5 @@ app.secret_key = "lyc"
 
 @app.route('/')
 def hello_world():
-    return render_template("index.html", project_name=setting.project_name,
+    return render_template("home.html", project_name=setting.project_name,
                            project_profile=setting.project_profile)

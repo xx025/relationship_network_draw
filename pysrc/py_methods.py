@@ -57,4 +57,7 @@ def create_filename(filename):
     return new_file_name
 
 
-
+def get_demo_data():
+    with open('pysrc/json/DemoData.json', mode='r',encoding='utf8') as rf:
+        data = json.load(rf)
+    return data
