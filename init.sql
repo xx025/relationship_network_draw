@@ -6,14 +6,14 @@ create table USER
 );
 -- 创建用户表
 
-drop table if exists USER_FILE;
-Create table USER_FILE
-(
-    user  text,
-    fpath text primary key,
-    fname text,
-    constraint user_key foreign key (user) references USER (email)
-);
+-- drop table if exists USER_FILE;
+-- Create table USER_FILE
+-- (
+--     user  text,
+--     fpath text primary key,
+--     fname text,
+--     constraint user_key foreign key (user) references USER (email)
+-- );
 -- 创建用户文件关联表
 
 INSERT INTO USER (email, password)

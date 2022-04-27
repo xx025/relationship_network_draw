@@ -58,6 +58,11 @@ def create_filename(filename):
 
 
 def get_demo_data():
-    with open('pysrc/json/DemoData.json', mode='r',encoding='utf8') as rf:
+    with open('pysrc/json/DemoData.json', mode='r', encoding='utf8') as rf:
         data = json.load(rf)
     return data
+
+
+def del_file(file_path):
+    if os.path.exists(file_path):
+        os.remove(file_path)

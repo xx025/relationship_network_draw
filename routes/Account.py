@@ -72,7 +72,7 @@ def register():
         else:
             return jsonify({"code": 3, "msg": "请获取验证码"})
     else:
-        return render_template("register.html",
+        return render_template("user/register.html",
                                project_name=setting.project_name,
                                project_profile=setting.project_profile)
 
@@ -95,7 +95,7 @@ def login():
             return jsonify({"code": 3, "msg": "账户不存在"})
 
     if request.method == 'GET':
-        return render_template("login.html", project_name=setting.project_name,
+        return render_template("user/login.html", project_name=setting.project_name,
                                project_profile=setting.project_profile)
 
 
@@ -122,7 +122,7 @@ def recover_password():
         else:
             jsonify({"code": -1, "msg": "邮箱未注册"})
     else:
-        return render_template("rpass.html", project_name=setting.project_name,
+        return render_template("user/rpass.html", project_name=setting.project_name,
                                project_profile=setting.project_profile)
 
 
