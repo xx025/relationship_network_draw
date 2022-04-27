@@ -4,10 +4,8 @@ from flask_db_config import database
 from routes.Account import user
 from routes.Applaction import draw_app
 
-
 app.register_blueprint(draw_app)
 app.register_blueprint(user)
-
 
 database.init_db()
 # 初始化数据库

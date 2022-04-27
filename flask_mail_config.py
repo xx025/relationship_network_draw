@@ -1,5 +1,3 @@
-
-
 from flask_mail import Mail
 
 from flask_app_config import app
@@ -14,5 +12,3 @@ app.config.update(
 )
 
 mail = Mail(app)
-
-

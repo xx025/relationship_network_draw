@@ -6,7 +6,6 @@ from werkzeug.utils import secure_filename
 
 from flask_app_config import ALLOWED_EXTENSIONS
 from flask_setting import setting
-from pysrc import get_table_date
 from pysrc.Application import get_my_data, add_new_file, del_db_data
 from pysrc.get_table_date import convert_graph_data
 from pysrc.py_methods import create_filename, get_demo_data, decode_loads, del_file

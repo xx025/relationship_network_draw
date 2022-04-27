@@ -1,10 +1,7 @@
-import json
 import unittest
 
-import demjson
-
 from pysrc.Application import get_my_data
-from pysrc.get_table_date import get_tabd, convert_graph_data
+from pysrc.get_table_date import get_tabd
 
 dg = get_tabd(
     file_path='C:/Users/sun/Desktop/test1/test12s3file.csv').get_data()

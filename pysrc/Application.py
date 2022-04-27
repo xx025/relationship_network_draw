@@ -1,4 +1,3 @@
-import json
 from flask_db_config import database
 
 
