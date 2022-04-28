@@ -67,7 +67,6 @@ $("#upload").click(function () {
                 console.log(res)
                 data = res
             }
-            console.log(res);
         },
         error: function (err) {
             $("#collapsemyTwo .alert").attr("class", "alert alert-danger");
@@ -94,6 +93,7 @@ function loadmydata() {
                 if (res.length > 0) {
                     $("#collapsemyThree .alert").css("display", 'none');
                 } else {
+                    $("#collapsemyThree .alert").css("display", 'block');
                     $("#collapsemyThree .alert").text("没有数据")
                 }
                 for (const re of res) {
@@ -149,6 +149,7 @@ function bind_id() {
             success: function (res) {
                 if (res) {
                     data = res;
+                    console.log(res)
                     draw_mydata(data)
                 }
             },

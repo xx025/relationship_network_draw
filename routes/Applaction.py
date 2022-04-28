@@ -2,13 +2,12 @@ import os
 
 from flask import Blueprint, jsonify
 from flask import render_template, session, redirect, request
-from werkzeug.utils import secure_filename
 
 from flask_app_config import ALLOWED_EXTENSIONS
 from flask_setting import setting
-from pysrc.Application import get_my_data, add_new_file, del_db_data
-from pysrc.get_table_date import convert_graph_data
-from pysrc.py_methods import create_filename, get_demo_data, decode_loads, del_file
+from models.Application import get_my_data, add_new_file, del_db_data
+from models.get_table_date import convert_graph_data
+from models.py_methods import create_filename, get_demo_data, decode_loads, del_file
 
 draw_app = Blueprint('draw', __name__)
 
@@ -39,7 +38,9 @@ def upload_file():
     :return: 上传的文件生成的json数据
     '''
     f = request.files['file']
-    file_name = secure_filename(f.filename)
+    # file_name = secure_filename(f.filename)
+    # 由于secure_filename不能处理中文文件名
+    file_name = f.filename
     new_name = create_filename(file_name)
     path = os.path.join(UPLOAD_FOLDER, new_name)
     f.save(path)

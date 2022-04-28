@@ -44,6 +44,15 @@ Create table USER_FILE
 
 ---
 
+### 上传文件数据示例
+
+![](https://cdn.jsdelivr.net/gh/xx025/cloudimg/img/20220428173101.png)
+
+![](https://cdn.jsdelivr.net/gh/xx025/cloudimg/img/20220428173147.png)
+
+
+---
+
 ### 知识库
 
 #### 文档

@@ -2,9 +2,10 @@ import copy
 import pathlib
 
 import pandas as pd
+from numpy import nan
 
 
-class get_tabd:
+class get_table_data:
 
     def __init__(self, file_path):
         self.file = file_path
@@ -18,18 +19,21 @@ class get_tabd:
         注意：header=None
         :return: 返回二维数据表格中的数据
         """
-        df = []
-        filetype = self.__file_type()
-        if filetype in ['.xls', '.xlsx']:
-            df = pd.read_excel(self.file)
-        elif filetype in ['.csv']:
-            df = pd.read_csv(self.file)
-        return df.values.tolist()
+        global df
+        try:
+            filetype = self.__file_type()
+            if filetype in ['.xls', '.xlsx']:
+                df = pd.read_excel(self.file)
+            elif filetype in ['.csv']:
+                df = pd.read_csv(self.file)
+            return df.values.tolist()
+        except:
+            return []
 
 
 class convert_graph_data:
-    def __init__(self, file_path: list):
-        self.data = get_tabd(file_path=file_path).get_data()
+    def __init__(self, file_path: str):
+        self.data = get_table_data(file_path=file_path).get_data()
         self.__nodes = self.__get_nodes()
         self.__nodes_n = len(self.__nodes)
         self.__nodes_dict = self.__get_nodes_dict()
@@ -37,8 +41,12 @@ class convert_graph_data:
     def __get_nodes(self):
         nodes = set()
         for i in self.data:
-            nodes.add(i[0])
-            nodes.add(i[1])
+            # 处理空值问题
+            # nan : numpy import nan
+            if i[0] is not nan:
+                nodes.add(i[0])
+            if i[1] is not nan:
+                nodes.add(i[1])
         else:
             return list(nodes)
 
@@ -81,12 +89,19 @@ class convert_graph_data:
                    "properties": {}}
 
         for i in self.data:
-            gv_link["source"] = self.__nodes_dict[i[0]]
-            gv_link["target"] = self.__nodes_dict[i[1]]
-            gv_link["label"] = i[2]
-            gv_links.append(copy.copy(gv_link))
+            if i[0] is not nan and i[1] is not nan:
+                # nan : numpy import nan
+                # 如果只有一个点，不构成线
+                gv_link["source"] = self.__nodes_dict[i[0]]
+                gv_link["target"] = self.__nodes_dict[i[1]]
+                if i[2] is nan:
+                    gv_link["label"] = ""
+                else:
+                    gv_link["label"] = i[2]
+                gv_links.append(copy.copy(gv_link))
         else:
             return gv_links
 
     def get_gv_data(self):
-        return {"nodes": self.get_gv_nodes(), "links": self.get_gv_links()}
+        re = {"nodes": self.get_gv_nodes(), "links": self.get_gv_links()}
+        return re

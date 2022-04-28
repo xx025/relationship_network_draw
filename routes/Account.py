@@ -4,9 +4,9 @@ from flask_mail import Message
 
 from flask_mail_config import mail
 from flask_setting import setting
-from pysrc.Account import add_new_user, check_user_pass, check_user_email, \
+from models.Account import add_new_user, check_user_pass, check_user_email, \
     update_password
-from pysrc.py_methods import decode_loads, random_code, get_hash256
+from models.py_methods import decode_loads, random_code, get_hash256
 
 user = Blueprint('user', __name__)
 
