@@ -11,6 +11,37 @@
 ![](https://cdn.jsdelivr.net/gh/xx025/cloudimg/img/20220427213444.png)
 
 ---
+# 数据库设计
+
+
+- 第一张表存储用户名和密码(sha256)，
+- 第二张表存储用户上传的文件路径(时间戳重命名)和源文件名
+
+
+### 创建用户表
+```sqlite
+drop table if exists USER;
+create table USER
+(
+    email    text PRIMARY KEY,
+    password text
+);
+
+```
+
+### 创建用户文件关联表
+```sqlite
+drop table if exists USER_FILE;
+Create table USER_FILE
+(
+    user  text,
+    fpath text primary key,
+    fname text,
+    constraint user_key foreign key (user) references USER (email)
+);
+```
+
+---
 
 ### 知识库
 
