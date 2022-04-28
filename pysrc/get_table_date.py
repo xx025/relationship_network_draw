@@ -18,7 +18,7 @@ class get_tabd:
         注意：header=None
         :return: 返回二维数据表格中的数据
         """
-        df=[]
+        df = []
         filetype = self.__file_type()
         if filetype in ['.xls', '.xlsx']:
             df = pd.read_excel(self.file)

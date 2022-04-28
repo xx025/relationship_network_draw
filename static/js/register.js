@@ -5,6 +5,7 @@ $(document).ready(function () {
         let code;
 
         function send_code() {
+             $("#di_log").text('验证码发送中。。')
             $.ajax({
                 url: "/send_code",
                 type: "post",

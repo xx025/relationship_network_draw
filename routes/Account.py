@@ -29,8 +29,10 @@ def send_code():
             session['code'] = code
             session['email'] = email
             print(codes)
+            print('验证码发送成功')
             return "1"
         except:
+            print('服务器未连接广域网,离线验证码：' + str(code))
             return "0"
 
 
