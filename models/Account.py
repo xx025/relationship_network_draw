@@ -41,9 +41,9 @@ def check_user_pass(email: str, password: str):
     return password == re[0][0]
 
 
-def update_password(email: str, password: str):
+def update_user_pass(email: str, new_pass: str):
     conn = database.get_connection()
     c = conn.cursor()
-    c.execute("UPDATE USER SET password=? where email=?", (password, email))
+    c.execute("UPDATE USER SET password=? where email=?", (new_pass, email))
     conn.commit()
     conn.close()

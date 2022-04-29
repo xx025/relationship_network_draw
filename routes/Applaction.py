@@ -5,7 +5,7 @@ from flask import render_template, session, redirect, request
 
 from flask_app_config import ALLOWED_EXTENSIONS
 from flask_setting import setting
-from models.Application import get_my_data, add_new_file, del_db_data
+from models.Application import get_user_files, add_user_file, del_user_file
 from models.get_table_date import convert_graph_data
 from models.py_methods import create_filename, get_demo_data, decode_loads, del_file
 
@@ -44,7 +44,7 @@ def upload_file():
     new_name = create_filename(file_name)
     path = os.path.join(UPLOAD_FOLDER, new_name)
     f.save(path)
-    add_new_file(email=session["email"], fpath=new_name, fname=file_name)
+    add_user_file(email=session["email"], fpath=new_name, fname=file_name)
     return jsonify(convert_graph_data(file_path=path).get_gv_data())
 
 
@@ -57,7 +57,7 @@ def demo_data():
 def my_data():
     if request.method == 'GET':
         # get 返回数据库中的数据列表
-        return jsonify(get_my_data(email=session["email"]))
+        return jsonify(get_user_files(email=session["email"]))
     elif request.method == 'POST':
         id = decode_loads(request.data)['id']
         filepath = UPLOAD_FOLDER + id
@@ -70,6 +70,6 @@ def del_data():
         id = decode_loads(request.data)['id']
         filepath = UPLOAD_FOLDER + id
         email = session['email']
-        del_db_data(email=email, fpath=id)
+        del_user_file(email=email, fpath=id)
         del_file(file_path=filepath)
         return "1"

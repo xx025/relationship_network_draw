@@ -5,7 +5,7 @@ from flask_mail import Message
 from flask_mail_config import mail
 from flask_setting import setting
 from models.Account import add_new_user, check_user_pass, check_user_email, \
-    update_password
+    update_user_pass
 from models.py_methods import decode_loads, random_code, get_hash256
 
 user = Blueprint('user', __name__)
@@ -115,7 +115,7 @@ def recover_password():
                 session_code = session.get('code')
                 if receive_email == session_email and receive_code == session_code:
                     password = get_hash256(receive_password)
-                    update_password(email=receive_email, password=password)
+                    update_user_pass(email=receive_email, new_pass=password)
                     return jsonify({"code": 1, "msg": "修改成功"})
                 else:
                     return jsonify({"code": 3, "msg": "验证码不正确"})

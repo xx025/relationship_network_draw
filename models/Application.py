@@ -1,7 +1,7 @@
 from flask_db_config import database
 
 
-def get_my_data(email: str):
+def get_user_files(email: str):
     conn = database.get_connection()
     c = conn.cursor()
     re = c.execute("select * FROM USER_FILE WHERE user = ?;", (email,))
@@ -9,9 +9,9 @@ def get_my_data(email: str):
     return re
 
 
-def add_new_file(email: str, fpath: str, fname: str):
+def add_user_file(email: str, fpath: str, fname: str):
     """
-    此方法
+    此方法添加用户文件记录
     """
     conn = database.get_connection()
     c = conn.cursor()
@@ -21,10 +21,10 @@ def add_new_file(email: str, fpath: str, fname: str):
     return True
 
 
-def del_db_data(email: str, fpath: str):
+def del_user_file(email: str, fpath: str):
     conn = database.get_connection()
     c = conn.cursor()
     c.execute("DELETE FROM USER_FILE WHERE user=? and fpath=?;", (email, fpath))
     conn.commit()
     conn.close()
-    return "1"
+    return True
