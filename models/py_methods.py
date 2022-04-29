@@ -59,7 +59,7 @@ def create_filename(filename):
 
 
 def get_demo_data():
-    with open('models/json/DemoData.json', mode='r', encoding='utf8') as rf:
+    with open('models/jsons/DemoData.json', mode='r', encoding='utf8') as rf:
         data = json.load(rf)
     return data
 
