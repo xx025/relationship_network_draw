@@ -1,5 +1,5 @@
-from flask_app_config import app
-from flask_db_config import database
+from flask_app import app
+from flask_db import database
 
 from routes.Account import user
 from routes.Applaction import draw_app

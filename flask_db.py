@@ -3,8 +3,8 @@ from contextlib import closing
 
 from flask import g
 
-from flask_app_config import app
-from flask_setting import setting
+from flask_app import app
+from flask_config import setting
 
 
 class database:

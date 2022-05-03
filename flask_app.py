@@ -1,15 +1,15 @@
 from flask import Flask, render_template
 
-from flask_setting import setting
+from flask_config import setting
 
-ALLOWED_EXTENSIONS = {'xls', 'xlsl', 'csv'}
+
 
 app = Flask(__name__)
 
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = b'_5#y2L"F4Q8zc]/'
 
 
 @app.route('/')
-def hello_world():
+def home():
     return render_template("user/home.html", project_name=setting.project_name,
                            project_profile=setting.project_profile)

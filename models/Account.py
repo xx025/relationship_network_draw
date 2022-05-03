@@ -1,4 +1,4 @@
-from flask_db_config import database
+from flask_db import database
 
 
 def check_user_email(email: str):

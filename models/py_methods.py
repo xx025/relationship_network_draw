@@ -4,6 +4,8 @@ import time
 
 import json
 
+from flask import jsonify
+
 
 def decode_loads(this_bytes):
     """
@@ -16,28 +18,30 @@ def decode_loads(this_bytes):
         return {}
 
 
-class random_code:
+class RandomCode:
     """
     生成一个6位的随机验证码
     返回一个字典对象，其中包括验证码、过期时间
     """
 
     @staticmethod
-    def get_codes():
-        def creat_code():
-            import random
-            code = []
-            for i in range(6):
-                if i == str(random.randint(1, 5)):
-                    code.append(i)
-                else:
-                    temp = random.randint(65, 90)
-                    code.append(chr(temp))
+    def __creat_code() -> str:
+        import random
+        code = []
+        for i in range(6):
+            if i == str(random.randint(1, 5)):
+                code.append(i)
+            else:
+                temp = random.randint(65, 90)
+                code.append(chr(temp))
 
-            return ''.join(code)
+        return ''.join(code)
+
+    @staticmethod
+    def get_codes():
 
         return {
-            'code': creat_code(),
+            'code': RandomCode.__creat_code(),
             'expiry_time': time.time() + 5 * 3600,
         }
 
@@ -67,3 +71,15 @@ def get_demo_data():
 def del_file(file_path):
     if os.path.exists(file_path):
         os.remove(file_path)
+
+
+def put_jsonfy(code: int, msg: str):
+    return jsonify({"code": code, "msg": msg})
+
+
+ALLOWED_EXTENSIONS = {'xls', 'xlsl', 'csv'}
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

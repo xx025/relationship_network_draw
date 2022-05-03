@@ -22,6 +22,7 @@ class config:
                            'port': cp.get('send_email', 'send_port')
                            }
         self.sqlite_db_path = cp.get('sqlite_db', 'path')
+        self.upload_folder = cp.get('file_storge', 'path')
 
 
 setting = config()
