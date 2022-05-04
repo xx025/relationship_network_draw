@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ project_name }}</title>
+
+    {% block style_css %}
+
+        {#        css内容#}
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body_html %}
+
+    {#    body内容#}
+{% endblock %}
+
+<script type=text/javascript src="{{ url_for('static', filename='common/jquery.min.js') }}"></script>
+{% block jsscr %}
+    {#js内容#}
+
+{% endblock %}
+
+</body>
+
+
+

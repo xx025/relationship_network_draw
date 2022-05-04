@@ -7,14 +7,14 @@ from numpy import nan
 
 class get_table_data:
 
-    def __init__(self, file_path):
+    def __init__(self, file_path: str):
         self.file = file_path
 
-    def __file_type(self):
+    def __file_type(self) -> str:
         # 判断文件类型
         return pathlib.Path(self.file).suffix
 
-    def get_data(self):
+    def get_data(self) -> list:
         """
         注意：header=None
         :return: 返回二维数据表格中的数据
@@ -38,7 +38,7 @@ class convert_graph_data:
         self.__nodes_n = len(self.__nodes)
         self.__nodes_dict = self.__get_nodes_dict()
 
-    def __get_nodes(self):
+    def __get_nodes(self) -> list:
         nodes = set()
         for i in self.data:
             # 处理空值问题
@@ -50,7 +50,7 @@ class convert_graph_data:
         else:
             return list(nodes)
 
-    def __get_nodes_dict(self):
+    def __get_nodes_dict(self) -> list:
 
         nodes_details = dict()
         for i in range(self.__nodes_n):
@@ -64,7 +64,7 @@ class convert_graph_data:
             """
             return nodes_details
 
-    def get_gv_nodes(self):
+    def __get_gv_nodes(self) -> list:
         gv_nodes = []
         gv_node = {'id': '1', 'label': 'name', 'type': 'null', 'x': 100,
                    'y': 100, 'properties': {}}
@@ -83,7 +83,7 @@ class convert_graph_data:
         else:
             return gv_nodes
 
-    def get_gv_links(self):
+    def __get_gv_links(self) -> list:
         gv_links = []
         gv_link = {"source": "1", "target": "2", "lable": "关系",
                    "properties": {}}
@@ -102,6 +102,6 @@ class convert_graph_data:
         else:
             return gv_links
 
-    def get_gv_data(self):
-        re = {"nodes": self.get_gv_nodes(), "links": self.get_gv_links()}
+    def get_gv_data(self) -> dict:
+        re = {"nodes": self.__get_gv_nodes(), "links": self.__get_gv_links()}
         return re

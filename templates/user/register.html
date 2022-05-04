@@ -1,9 +1,12 @@
 {% extends "user/home.html" %}
-{% block style_css %}
-    <script type=text/javascript src="{{ url_for('static', filename='js/register.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
 
+{% block userscss %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
 {% endblock %}
+
+
+
+
 {% block content %}
     <div class="box_main_top_right" id="register" style="display: block">
         <p class="textle">邮箱 <span id="ema"></span></p>
@@ -31,4 +34,9 @@
             已有账号？<span class="spa login_link">登录</span>
         </div>
     </div>
+{% endblock %}
+
+
+{% block jsscr %}
+    <script type=text/javascript src="{{ url_for('static', filename='js/register.js') }}"></script>
 {% endblock %}

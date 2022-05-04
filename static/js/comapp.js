@@ -814,7 +814,14 @@ function commonOperateEvent() {
     $('#searchNode').on('click', function () {
         var nodeName = $.trim($('#nodeName').val());
         var node = visgraph.findNode(nodeName);
-        $('#nodeInfo').val(JSON.stringify({id: node.id, label: node.label, type: node.type, x: node.x, y: node.y, properties: node.properties}));
+        $('#nodeInfo').val(JSON.stringify({
+            id: node.id,
+            label: node.label,
+            type: node.type,
+            x: node.x,
+            y: node.y,
+            properties: node.properties
+        }));
     });
 
     $('#findPath').on('click', function () {

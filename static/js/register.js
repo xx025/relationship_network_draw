@@ -5,7 +5,7 @@ $(document).ready(function () {
         let code;
 
         function send_code() {
-             $("#di_log").text('验证码发送中。。')
+            $("#di_log").text('验证码发送中。。')
             $.ajax({
                 url: "/send_code",
                 type: "post",
@@ -58,6 +58,7 @@ $(document).ready(function () {
 
         function ok_form() {
             if (ok_reg === 1) {
+                $("#submit-btn").unbind("click");
                 $("#submit-btn").click(function () {
 
                     //1. 点击按钮为邮箱和密码绑定值
@@ -185,6 +186,7 @@ $(document).ready(function () {
 
         //为submit绑定注册
         $("#submit_code").click(function () {
+            $("#submit_code").unbind("click");
             register();
         })
         $(".login_link").click(function () {

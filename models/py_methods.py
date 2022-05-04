@@ -1,8 +1,7 @@
 import hashlib
+import json
 import os
 import time
-
-import json
 
 from flask import jsonify
 

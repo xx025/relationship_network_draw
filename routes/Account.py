@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request
 from flask import session
 from flask_mail import Message
 
-from flask_mail import mail
 from flask_config import setting
+from flask_mail_c import mail
 from models.Account import add_new_user, check_user_pass, check_user_email, \
     update_user_pass
 from models.py_methods import decode_loads, RandomCode, get_hash256, put_jsonfy
@@ -133,4 +133,5 @@ def recover_password():
 def logout():
     if request.method == 'POST':
         session["islogin"] = False
+        session.clear()
         return put_jsonfy(1, "已经退出登录")

@@ -1,11 +1,10 @@
 
 
 {% extends "user/home.html" %}
-{% block style_css %}
-
-    <script type=text/javascript src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% block userscss %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
 {% endblock %}
+
 {% block content %}
     <div id="login">
         <p>邮箱</p>
@@ -17,4 +16,9 @@
         <div id="zhmm">忘记密码啦？<span id="zhmm-btn" class="spa">找回密码</span>
         </div>
     </div>
+{% endblock %}
+
+
+{% block jsscr %}
+    <script type=text/javascript src="{{ url_for('static', filename='js/login.js') }}"></script>
 {% endblock %}

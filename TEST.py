@@ -1,6 +1,6 @@
 import unittest
 
-from models.get_table_date import get_table_data, convert_graph_data
+from models.get_table_date import convert_graph_data
 
 global dg
 
@@ -11,7 +11,6 @@ class TestCase(unittest.TestCase):
         pass
 
     def test_case_02(self):
-
         gvd = convert_graph_data(file_path='C:/Users/sun/Desktop/test1/bmgx.csv').get_gv_data()
         print(gvd)
 

@@ -1,42 +1,49 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ project_name }}</title>
-    <script type=text/javascript src="{{ url_for('static', filename='common/jquery.min.js') }}"></script>
+
+
+
+{% extends "base.html" %}
+
+{% block style_css %}
+
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
-    {% block style_css %}
-        {#不同的页面加载不同的css样式文件#}
-        {#参考，jinja2模板：http://www.ainoob.cn/docs/jinja2/templates.html#id11#}
+
+    {% block userscss %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dis_info.css') }}">
+
     {% endblock %}
-</head>
-<body>
-<div class="box_main">
-    <div class="box_main_top">
-        <div class="box_main_top_left">
-            <a href="/">
-                <img src="../../static/img/1501077931-network.png" alt="视图">
-            </a>
-        </div>
-        <div class="box_main_top_right">
-            {% block content %}
-                {#基础模板默认的展示#}
-                <div id="dis_info">
-                    <div class="p1">欢迎使用:{{ project_name }}</div>
-                    <div class="p2">项目简介：{{ project_profile }}</div>
-                    <div class="p3"><a href="/app">立即开始></a></div>
-                </div>
-            {% endblock %}
-        </div>
-    </div>
-    <div class="box_main_bottom">
-        <p class="p4info">
-            提示：为了保证显示效果，请使用更大分辨率的显示器
-        </p>
 
 
+{% endblock %}
+
+{% block body_html %}
+    {{ super() }}
+    <div class="box_main">
+        <div class="box_main_top">
+            <div class="box_main_top_left">
+                <a href="/">
+                    <img src="../../static/img/1501077931-network.png" alt="视图">
+                </a>
+            </div>
+            <div class="box_main_top_right">
+                {% block content %}
+                    {#基础模板默认的展示#}
+                    <div id="dis_info">
+                        <div class="p1">欢迎使用:{{ project_name }}</div>
+                        <div class="p2">项目简介：{{ project_profile }}</div>
+                        <div class="p3"><a href="/app">立即开始></a></div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+        <div class="box_main_bottom">
+            <p class="p4info">
+                提示：为了保证显示效果，请使用更大分辨率的显示器
+            </p>
+        </div>
     </div>
-</div>
-</body>
-</html>
+
+{% endblock %}
+
+
+

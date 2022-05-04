@@ -1,8 +1,11 @@
 {% extends "user/home.html" %}
-{% block style_css %}
-    <script type=text/javascript src="{{ url_for('static', filename='js/rpass.js') }}"></script>
+
+
+{% block userscss %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/rpass.css') }}">
 {% endblock %}
+
+
 {% block content %}
     <div class="box_main_top_right" id="recover_password" style="display: block">
         <p>邮箱 <span id="mail_text"></span></p>
@@ -16,4 +19,9 @@
         <input id="password" class="m-input" type="password">
         <div id="submit-btn" class="m-btn">提交</div>
     </div>
+{% endblock %}
+
+
+{% block jsscr %}
+    <script type=text/javascript src="{{ url_for('static', filename='js/rpass.js') }}"></script>
 {% endblock %}
