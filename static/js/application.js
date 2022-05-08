@@ -64,6 +64,7 @@ $("#upload").click(function () {
         success: function (res) {
             if (res) {
                 $("#collapsemyTwo .alert").css("display", "block")
+                document.querySelector('form').reset()
                 console.log(res)
                 data = res
             }
