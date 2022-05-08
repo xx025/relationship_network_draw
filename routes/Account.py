@@ -27,7 +27,10 @@ def send_code():
         msg = Message("Hi!来自绘图的验证码", sender=setting.send_email['email'],
                       recipients=[email, ])
         msg.body = "您的验证码：" + code + '。'
-        mail.send(msg)
+        try:
+            mail.send(msg)
+        except:
+            pass
         return "1"
 
 

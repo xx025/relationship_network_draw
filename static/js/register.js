@@ -115,13 +115,13 @@ $(document).ready(function () {
             if (check_email(email) === true) {
                 //邮箱合格
                 $("#ema").css("color", "green")
-                $("#ema").text("✔");
+                $("#ema").text("");
                 if (check_pass(password) === true) {
                     $("#pas").css("color", "green")
-                    $("#pas").text("✔");
+                    $("#pas").text("");
                     if (re_password === password) {
                         $("#re_pas").css("color", "green")
-                        $("#re_pas").text("✔");
+                        $("#re_pas").text("");
                         ok_reg = 1;
                         ok_form();
                     } else {

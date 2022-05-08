@@ -50,11 +50,11 @@ def get_hash256(hash_str):
 
 
 def create_filename(filename):
-    '''
+    """
     生成基于时间戳的随机文件名
     :param filename: 文件原名
     :return: 文件名
-    '''
+    """
     import uuid
     ext = os.path.splitext(filename)[1]
     new_file_name = str(uuid.uuid1()) + ext

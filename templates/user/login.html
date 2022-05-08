@@ -2,15 +2,58 @@
 
 {% extends "user/home.html" %}
 {% block userscss %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <style>
+        #login {
+            margin-top: 80px;
+            margin-left: 55px;
+            margin-right: 55px;
+        }
+
+
+        #submit-btn, #login-btn {
+            margin-top: 39px;
+            float: left;
+        }
+
+
+        #submit-btn {
+            margin-left: 30px;
+            margin-top: 39px;
+        }
+
+        #login-btn {
+            margin-top: 39px;
+            margin-left: 77px;
+        }
+
+        #zhmm {
+            margin-top: 88px;
+            margin-left: 204px;
+            display: inline-block;
+        }
+
+
+    </style>
+
 {% endblock %}
 
 {% block content %}
     <div id="login">
-        <p>邮箱</p>
-        <input id="id" class="m-input" type="text">
-        <p>密码</p>
-        <input id="password" class="m-input" type="password">
+        <h1>登录</h1> &nbsp;
+        <div class="input-group  mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">邮箱</span>
+            </div>
+            <input id="id" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <div class="input-group  mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">密码</span>
+            </div>
+            <input id="password" class="form-control" type="password" aria-label="Small"
+                   aria-describedby="inputGroup-sizing-sm">
+        </div>
+
         <div id="submit-btn" class="m-btn">注册</div>
         <div id="login-btn" class="m-btn">登录></div>
         <div id="zhmm">忘记密码啦？<span id="zhmm-btn" class="spa">找回密码</span>

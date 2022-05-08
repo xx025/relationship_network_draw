@@ -2,26 +2,263 @@
 
 
 {% block userscss %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/rpass.css') }}">
+    <style>
+        #recover_password {
+            margin-top: 76px;
+            margin-left: 55px;
+            margin-right: 55px;
+        }
+
+        #recover_password p, #a_acc p {
+            font-size: 19px;
+        }
+
+
+        #submit-btn {
+            margin-top: 18px;
+            margin-left: 129px;
+        }
+
+        .box_main_top .box_main_top_left, .box_main_top_right {
+            float: left;
+            height: inherit;
+            width: 429px;
+        }
+
+        #get-code {
+
+            width: 104px;
+        }
+
+    </style>
 {% endblock %}
 
 
 {% block content %}
     <div class="box_main_top_right" id="recover_password" style="display: block">
-        <p>邮箱 <span id="mail_text"></span></p>
-        <input id="email" class="m-input" type="text">
-        <p>验证码 <span id="code_text"></span></p>
-        <div class="line-block">
-            <input id="code" class="m-input" type="text">
-            <div id="get_code" class="m-btn">发送</div>
-        </div>
-        <p>新密码 <span id="password_text"></span></p>
-        <input id="password" class="m-input" type="password">
+        <h1>找回密码</h1> &nbsp;
+        <form action="">
+
+            <label for="email">邮箱</label>
+            <input type="text" class="form-control " id="email"
+                   value="" required>
+            <div class="valid-feedback" id="mail_text"></div>
+
+            <label for="code">验证码 </label>
+            <div class="form-inline row" style="margin-left: 0">
+                <input type="text" class="form-control " id="code"
+                       style="margin-right: 20px;width: 69%" value="" required>
+                <button id="get-code" type="button" class="btn btn-secondary">获取</button>
+                <div class="valid-feedback" id="code_text"></div>
+            </div>
+
+
+            <label for="password">新密码</label>
+            <input type="password" id="password" class="form-control"
+                   required>
+            <div class="valid-feedback" id="password_text"></div>
+        </form>
         <div id="submit-btn" class="m-btn">提交</div>
     </div>
 {% endblock %}
 
 
 {% block jsscr %}
-    <script type=text/javascript src="{{ url_for('static', filename='js/rpass.js') }}"></script>
+    <script>
+
+
+        {#function toog(id1, sta1, id2, sta2, text) {#}
+        {##}
+        {#    stu1 = sta1 == 1 ? 'is-valid' : 'is-invalid'#}
+        {#    stu2 = sta2 == 1 ? 'valid-feedback' : 'invalid-feedback'#}
+        {#    $("#" + id1).addClass(stu1).removeClass("is-valid");#}
+        {#    $("#" + id2).attr("class", "invalid-feedback");#}
+        {#    $("#" + id2).text(text);#}
+        {##}
+
+
+        function check_email(szMail) {
+            let szReg = /^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,8})$/;
+            //邮箱正则匹配来自：https://juejin.cn/post/6844903574778937358
+            return szReg.test(szMail);
+        }
+
+        function check_pass(cPASS) {
+            return cPASS.length >= 8;
+        }
+
+        function bind_input_blur_email() {
+            $("#email").blur(function () {
+                email = $("#email").val();
+                if (check_email(email)) {
+                    let data = {'email': email}
+                    $.ajax({
+                        url: "/check_email",
+                        type: "post",
+                        data: JSON.stringify(data),
+                        contentType: 'application/json; charset=UTF-8',
+                        success: function (data) {
+                            code = data["code"]
+                            msg = data['msg']
+                            console.log(data)
+                            if (code == 2) {
+                                $("#mail_text").attr("class", "valid-feedback");
+                                $("#email").addClass("is-valid").removeClass("is-invalid");
+                                $("#mail_text").text("");
+                                check_email_tag = true;
+                            } else {
+                                $("#email").addClass("is-invalid").removeClass("is-valid");
+                                $("#mail_text").attr("class", "invalid-feedback");
+                                $("#mail_text").text("邮箱未注册");
+                            }
+                        },
+                        error: function (emg) {
+                            console.log(emg);
+                        }
+                    });
+                } else {
+                    //    邮箱格式不正确
+                    $("#email").addClass("is-invalid").removeClass("is-invalid");
+                    $("#mail_text").attr("class", "invalid-feedback");
+                    if (email === "") {
+                        $("#mail_text").text("请输入邮箱");
+                    } else {
+                        $("#mail_text").text("请输入正确的邮箱");
+                    }
+                }
+            })
+        }
+
+        function bind_input_blur_code() {
+            $("#code").blur(function () {
+                code = $("#code").val();
+                if (code_send !== true) {
+                    $("#code_text").addClass("invalid-feedback").removeClass("valid-feedback");
+                    $("#code").addClass("is-invalid").removeClass("is-valid");
+                    $("#code_text").text('请获取验证码')
+                    console.log("是否发生")
+                } else {
+                    if (code.length === 6) {
+                        $("#code_text").attr("class", "valid-feedback");
+                        $("#code_text").text('');
+                        $("#code").addClass("is-valid").removeClass("is-invalid")
+                        check_code_tag = true
+                    } else {
+                        $("#code_text").attr("class", "invalid-feedback");
+                        $("#code").addClass("is-invalid").removeClass("is-valid");
+                        if (code === " ") {
+                            $("#code_text").text('请输入验证码')
+                        } else {
+                            $("#code_text").text('请输入6位验证码')
+                        }
+
+                    }
+                }
+
+            })
+        }
+
+
+        function bind_input_blur_password() {
+            $("#password").blur(function () {
+                password = $("#password").val()
+                if (check_pass(password)) {
+                    $("#password_text").attr("class", "valid-feedback");
+                    $("#password").addClass("is-valid").removeClass("is-invalid")
+                    $("#password_text").text('');
+                    check_password_tag = true
+                    console.log("妈妈一直")
+                } else {
+                    console.log("error")
+                    $("#password_text").attr("class", "invalid-feedback");
+                    $("#password").addClass("is-invalid").removeClass("is-valid")
+                    if (password.length === 0) {
+                        $("#code_text").text('请输入密码');
+                    } else if (password.length < 8) {
+                        $("#password_text").text("密码太短了");
+                    }
+                }
+            })
+        }
+
+        function bind_click_getcode() {
+            $("#get-code").click(function () {
+                if (check_email_tag === true) {
+                    $("#get-code").text('发送中')
+                    $("#code_text").text("")
+                    {#$("#code_text").attr("class", "valid-feedback");#}
+                    $.ajax({
+                        url: "/send_code",
+                        type: "post",
+                        data: JSON.stringify({'email': email}),
+                        contentType: 'application/json; charset=UTF-8',
+                        success: function (data) {
+                            if (data === "1") {
+                                $("#get-code").text('发送成功')
+                                code_send = true;
+                            } else {
+                                $("#get-code").text('发送失败')
+                            }
+                        },
+                        error: function (emg) {
+                            console.log(emg)
+                        }
+                    });
+                }
+            })
+        }
+
+        function bind_click_submit() {
+            $("#submit-btn").click(function () {
+                if (check_code_tag && check_password_tag && check_email_tag) {
+
+                    let data = {'email': email, 'password': password, 'code': code}
+                    console.log(data)
+                    $.ajax({
+                        url: "/recover_password",
+                        type: "post",
+                        data: JSON.stringify(data),
+                        contentType: 'application/json; charset=UTF-8',
+                        success: function (data) {
+                            code = data["code"]
+                            msg = data['msg']
+                            if (code === 1) {
+                                alert(msg)
+                                location.href = "/login"
+                            } else if (code === -1) {
+                                alert(msg)
+                                {#location.reload()#}
+                            } else {
+                                alert(msg)
+                            }
+                        },
+                        error: function (emg) {
+                            console.log(emg);
+                        }
+                    });
+
+                }
+
+            })
+
+        }
+
+        let email;
+        let check_email_tag;
+        let code;
+        let code_send;
+        let check_code_tag;
+        let password;
+        let check_password_tag;
+
+        $(document).ready(function () {
+                bind_input_blur_email();
+                bind_input_blur_code();
+                bind_input_blur_password();
+                bind_click_getcode();
+                bind_click_submit();
+            }
+        );
+
+    </script>
 {% endblock %}

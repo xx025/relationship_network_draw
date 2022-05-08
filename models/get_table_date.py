@@ -20,15 +20,16 @@ class get_table_data:
         :return: 返回二维数据表格中的数据
         """
         global df
-        try:
-            filetype = self.__file_type()
-            if filetype in ['.xls', '.xlsx']:
-                df = pd.read_excel(self.file)
-            elif filetype in ['.csv']:
-                df = pd.read_csv(self.file)
-            return df.values.tolist()
-        except:
-            return []
+
+        filetype = self.__file_type()
+        if filetype in ['.xls', '.xlsx']:
+            df = pd.read_excel(self.file)
+        elif filetype in ['.csv']:
+            df = pd.read_csv(self.file)
+        val = df.values.tolist()
+        print(f"{val=}")
+        return val
+
 
 
 class convert_graph_data:
