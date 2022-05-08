@@ -26,30 +26,25 @@ class get_table_data:
             df = pd.read_excel(self.file)
         elif filetype in ['.csv']:
             df = pd.read_csv(self.file)
-        val = df.values.tolist()
-        print(f"{val=}")
-        return val
-
+        return df
 
 
 class convert_graph_data:
     def __init__(self, file_path: str):
-        self.data = get_table_data(file_path=file_path).get_data()
+
+        self.__val = get_table_data(file_path=file_path).get_data()
+        self.__data = self.__get_data()
         self.__nodes = self.__get_nodes()
         self.__nodes_n = len(self.__nodes)
         self.__nodes_dict = self.__get_nodes_dict()
 
+    def __get_data(self):
+        # 将数据转换为二维列表（数组）
+        return self.__val.values.tolist()
+
     def __get_nodes(self) -> list:
-        nodes = set()
-        for i in self.data:
-            # 处理空值问题
-            # nan : numpy import nan
-            if i[0] is not nan:
-                nodes.add(i[0])
-            if i[1] is not nan:
-                nodes.add(i[1])
-        else:
-            return list(nodes)
+        # 取二维列表的前两列
+        return list(set(self.__val.iloc[:, :2].stack().tolist()))
 
     def __get_nodes_dict(self) -> list:
 
@@ -89,7 +84,7 @@ class convert_graph_data:
         gv_link = {"source": "1", "target": "2", "lable": "关系",
                    "properties": {}}
 
-        for i in self.data:
+        for i in self.__data:
             if i[0] is not nan and i[1] is not nan:
                 # nan : numpy import nan
                 # 如果只有一个点，不构成线
