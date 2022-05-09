@@ -11,3 +11,8 @@ app.secret_key = b'_5#y2L"F4Q8zc]/'
 def home():
     return render_template("user/home.html", project_name=setting.project_name,
                            project_profile=setting.project_profile)
+
+
+@app.route('/ys')
+def ys():
+    return render_template("演示.html")

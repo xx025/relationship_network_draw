@@ -1,0 +1,34 @@
+{% extends "user/home.html" %}
+{% block userscss %}
+    <style>
+        video {
+            width: inherit;
+            height: auto;
+            border: 2px solid #ffffff;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body_html %}
+    <div class="box_main">
+        <video src="{{ url_for('static', filename='演示视频.mp4') }}" controls speed=1.5></video>
+    </div>
+{% endblock %}
+
+
+{% block jsscr %}
+    <script>
+        $(document).ready(function () {
+                const video = document.querySelector("video");
+                // Twice as fast!
+                video.playbackRate = 1.5;
+            }
+        );
+
+
+    </script>
+{% endblock %}
+
+
+

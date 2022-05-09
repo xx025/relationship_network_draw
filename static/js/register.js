@@ -5,7 +5,7 @@ $(document).ready(function () {
         let code;
 
         function send_code() {
-            $("#di_log").text('验证码发送中。。')
+            $("#get-code").text('发送中')
             $.ajax({
                 url: "/send_code",
                 type: "post",
@@ -14,7 +14,7 @@ $(document).ready(function () {
                 success: function (data) {
                     // console.log(data)
                     if (data === "1") {
-                        $("#di_log").text('验证码已经发送到您的邮箱，请检查收件箱')
+                        $("#get-code").text('发送成功')
                     }
                 },
                 error: function (emg) {

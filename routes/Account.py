@@ -23,7 +23,6 @@ def send_code():
         code = codes['code']
         session['code'] = code
         session['email'] = email
-        print(codes)
         msg = Message("Hi!来自绘图的验证码", sender=setting.send_email['email'],
                       recipients=[email, ])
         msg.body = "您的验证码：" + code + '。'
