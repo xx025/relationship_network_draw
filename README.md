@@ -1,5 +1,20 @@
 # 关系网可视化项目
 
+---
+
+运行项目需要在config.cfg文件中配置邮箱相关信息
+如是阿里云邮箱只需选填邮箱和密码即可
+
+```cfg
+[send_email]
+address = *
+password = *
+send_server = smtp.aliyun.com
+send_port = 25
+```
+
+---
+
 - 后端：FLask
 - 前端绘图：GraphVis
 - 数据库：Sqlite
