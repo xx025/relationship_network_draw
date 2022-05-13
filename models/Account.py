@@ -1,7 +1,7 @@
 from flask_db import database
 
 
-def check_user_email(email: str):
+def check_user_email(email: str) -> bool:
     """
     此方法，向数据库检查邮箱是否存在于数据库中
     """
@@ -19,7 +19,7 @@ def check_user_email(email: str):
     return len(re) > 0
 
 
-def add_new_user(email: str, password: str):
+def add_new_user(email: str, password: str) -> None:
     """
     此方法，向数据库插入一个新用户的邮箱和密码（sha256）
     在此方法内不校验email是否已经存在于数据库，
@@ -30,10 +30,9 @@ def add_new_user(email: str, password: str):
     c.execute("INSERT INTO user (email,password) VALUES (?,?);", (email, password))
     conn.commit()
     conn.close()
-    return True
 
 
-def check_user_pass(email: str, password: str):
+def check_user_pass(email: str, password: str) -> bool:
     conn = database.get_connection()
     c = conn.cursor()
     re = c.execute("SELECT  password FROM USER WHERE email=? ;", (email,))
@@ -41,7 +40,7 @@ def check_user_pass(email: str, password: str):
     return password == re[0][0]
 
 
-def update_user_pass(email: str, new_pass: str):
+def update_user_pass(email: str, new_pass: str) -> None:
     conn = database.get_connection()
     c = conn.cursor()
     c.execute("UPDATE USER SET password=? where email=?", (new_pass, email))

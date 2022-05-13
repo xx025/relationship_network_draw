@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>欢迎使用：{{ project_name }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='common/graphvis/style/bootstrap/bootstrap.min.css') }}">
+
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style/bootstrap/fontawesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+          href="{{ url_for('static', filename='common/graphvis/style/bootstrap/fontawesome/css/font-awesome.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='common/graphvis/style/style.css') }}">
 
 
 </head>
@@ -505,13 +508,16 @@
 </body>
 
 
-<script type=text/javascript src="{{ url_for('static', filename='common/jquery.min.js') }}"></script>
-<script type=text/javascript src="{{ url_for('static', filename='style/bootstrap/bootstrap.min.js') }}"></script>
-<script type=text/javascript src="{{ url_for('static', filename='js/visgraph.min.js') }}"></script>
-<script type=text/javascript src="{{ url_for('static', filename='js/visgraph-layout.min.js') }}"></script>
-<script type=text/javascript src="{{ url_for('static', filename='js/visgraph-community.min.js') }}"></script>
-<script type=text/javascript src="{{ url_for('static', filename='js/comapp.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='common/graphvis/jquery.min.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='common/graphvis/style/bootstrap/bootstrap.min.js') }}"></script>
 
+<script type=text/javascript src="{{ url_for('static', filename='common/graphvis/visgraph.min.js') }}"></script>
+<script type=text/javascript src="{{ url_for('static', filename='common/graphvis/visgraph-layout.min.js') }}"></script>
+<script type=text/javascript
+        src="{{ url_for('static', filename='common/graphvis/visgraph-community.min.js') }}"></script>
+
+<script type=text/javascript src="{{ url_for('static', filename='js/comapp.js') }}"></script>
 <script type=text/javascript src="{{ url_for('static', filename='js/application.js') }}"></script>
 
 

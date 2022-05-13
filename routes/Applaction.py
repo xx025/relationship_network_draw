@@ -29,7 +29,7 @@ def upload_file():
     """
     f = request.files['file']
     # file_name = secure_filename(f.filename)
-    # 由于secure_filename不能处理中文文件名
+    # 由于secure_filename不能处理中文文件名  ../../测试test.cvs
     file_name = f.filename
     new_name = create_filename(file_name)
     path = os.path.join(setting.upload_folder, new_name)

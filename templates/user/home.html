@@ -5,15 +5,10 @@
 
 {% block style_css %}
 
-
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
-
     {% block userscss %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dis_info.css') }}">
-
     {% endblock %}
-
-
 {% endblock %}
 
 {% block body_html %}
